@@ -1,0 +1,44 @@
+# Node
+node_modules/
+dist/
+.env
+.env.*
+
+# Angular
+.secrets/
+.angular/cache/
+.angular/local/
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/build/
+
+# Misc
+*.tgz
+
+# Backend
+/seccion3/backend/.env
+/seccion3/backend/dist/
+
+# Frontend
+/seccion1/angularGpt/.env
+/seccion1/angularGpt/dist/
+/seccion1/angularGpt/.angular/
+/seccion1/angularGpt/coverage/
+
+# Others
+*.log
