@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 
 
 
+
 @Injectable()
 export class GptService {
 
@@ -26,9 +27,10 @@ export class GptService {
   }
 
 
-  async prosConsDiscursserStream({ prompt }: ProsConsDiscursserDto) {
-    return await prosConsDiscursserStreamUseCase( this.openai, {prompt} )
+  prosConsDiscursserStream({ prompt }: ProsConsDiscursserDto) {
+    return prosConsDiscursserStreamUseCase( this.openai, {prompt} )
   }
+
 
 
 }
