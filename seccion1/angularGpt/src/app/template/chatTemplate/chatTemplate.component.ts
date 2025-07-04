@@ -20,8 +20,8 @@ import { OpenAiService } from 'app/presentation/services/openai.service';
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessagesBoxComponent,
-    TextMessageboxFileComponent,
-    TextMessageBoxSelectComponent
+    // TextMessageboxFileComponent,
+    // TextMessageBoxSelectComponent
   ],
   templateUrl: './chatTemplate.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
