@@ -32,10 +32,43 @@ export default class PropsConsStreamPageComponent {
   public isLoading = signal( false );
   public openAiService = inject( OpenAiService )
 
+  public abortSignal = new AbortController();
+
 
   async handleMessage( promp:string){
+
+    this.abortSignal.abort()
+    this.abortSignal = new AbortController();
+
+    this.messages.update( prev => [
+      ...prev,
+      {
+        isGpt:false,
+        text: promp
+      }
+    ]);
+
+
+
+
+
+    this.isLoading.set( true );
+    const stream =  this.openAiService.prosconsStreamDiscusser( promp, this.abortSignal.signal)
+    this.isLoading.set( true );
     
-    await this.openAiService.prosconsStreamDiscusser( promp )
+    for await ( const text of stream ){
+      this.handleStreamResponse( text )
+    }
+  
+  }
+
+  handleStreamResponse( message:string ){
+
+
+    this.messages().pop();
+    const messages = this.messages();
+
+    this.messages.set([...messages, { isGpt: true, text: message }])
   }
 
   handleMessageWithFile( { prompt, file}: TextMessageEvent){
