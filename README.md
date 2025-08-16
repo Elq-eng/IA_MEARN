@@ -56,12 +56,10 @@ API construida con NestJS que expone endpoints para procesamiento de texto, orto
 1. Instala dependencias:
    ```bash
    cd seccion3/backend
-   npm install
-   # o yarn install
+   yarn install
    ```
 2. Inicia el servidor de desarrollo:
    ```bash
-   npm run start:dev
    # o yarn start:dev
    ```
 3. El backend estará disponible en [http://localhost:3000](http://localhost:3000)

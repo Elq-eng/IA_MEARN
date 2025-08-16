@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { orthographyCheckUseCase,prosConsDiscursserUseCase, prosConsDiscursserStreamUseCase } from './use-cases';
-import { OrthographyDto,ProsConsDiscursserDto } from './DTOs';
+import { orthographyCheckUseCase,prosConsDiscursserUseCase, prosConsDiscursserStreamUseCase,translateUseCase } from './use-cases';
+import { OrthographyDto,ProsConsDiscursserDto, TranslateDto } from './DTOs';
 import OpenAI from 'openai';
 
 
@@ -29,6 +29,11 @@ export class GptService {
 
   prosConsDiscursserStream({ prompt }: ProsConsDiscursserDto) {
     return prosConsDiscursserStreamUseCase( this.openai, {prompt} )
+  }
+
+
+  async translateText({ prompt, lang } : TranslateDto) {
+    return await translateUseCase( this.openai, { prompt, lang })
   }
 
 
