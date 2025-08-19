@@ -42,3 +42,7 @@ Thumbs.db
 
 # Others
 *.log
+
+
+/generated/*
+!/generated/.gitkeep
