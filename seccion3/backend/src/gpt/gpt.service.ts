@@ -4,9 +4,10 @@ import * as fs from 'fs';
 
 
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { orthographyCheckUseCase,prosConsDiscursserUseCase, prosConsDiscursserStreamUseCase,translateUseCase, textToAudioUseCase } from './use-cases';
+import { orthographyCheckUseCase,prosConsDiscursserUseCase, prosConsDiscursserStreamUseCase,translateUseCase, textToAudioUseCase, audioToTextUseCase } from './use-cases';
 import { OrthographyDto,ProsConsDiscursserDto, TextToAudioDto, TranslateDto } from './DTOs';
 import OpenAI from 'openai';
+import { AudioToTextDto } from './DTOs/audio-to-text.dto';
 
 
 
@@ -59,6 +60,13 @@ export class GptService {
 
       return filePath
 
+  }
+
+  async audioToText( audioFile: Express.Multer.File, audioToTextDto?: AudioToTextDto ){
+
+    const prompt = audioToTextDto?.prompt;
+
+    return await audioToTextUseCase( this.openai, { audioFile, prompt })
   }
 
 }
